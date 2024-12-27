@@ -1,4 +1,4 @@
-# Full-Stack Book Management Application
+# Full-Stack Book Management Application by NATALIA RODRIGUEZ REDONDO
 
 ## Project Overview
 
