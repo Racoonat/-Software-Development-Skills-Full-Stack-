@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../components/Spinner'
@@ -9,6 +9,7 @@ import { getBooks, reset } from '../features/books/bookSlice'
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [showForm, setShowForm] = useState(false)
 
   const { user } = useSelector((state) => state.auth)
   const { books, isLoading, isError, message } = useSelector(
@@ -42,7 +43,15 @@ function Dashboard() {
         <p>Bookshelf</p>
       </section>
 
-      <BookForm />
+      <button
+        onClick={() => setShowForm(!showForm)}
+        className='btn btn-block'
+        style={{ width: '100%', marginBottom: '20px' }}
+      >
+        {showForm ? 'Close' : 'Add Books'}
+      </button>
+
+      {showForm && <BookForm />}
 
       <section className='content'>
         {books.length > 0 ? (

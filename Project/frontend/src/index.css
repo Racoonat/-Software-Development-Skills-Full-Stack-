@@ -88,8 +88,8 @@ h3 {
 
 .books {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr); /* 2 libros por fila */
+  gap: 20px;
 }
 
 .book {
@@ -97,31 +97,41 @@ h3 {
   padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  transition: transform 0.2s ease-in-out; /* Añadir transición para el efecto de hover */
+  transition: transform 0.2s ease-in-out;
+  height: 200px; /* Ajusta la altura de las tarjetas */
+  display: flex;
+  flex-direction: row; /* Asegura que la información esté a la derecha */
 }
 
 .book:hover {
-  transform: scale(1.05); /* Escalar la tarjeta del libro cuando se pasa el ratón por encima */
-  cursor: pointer; /* Cambiar el cursor para indicar que es interactiva */
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .book.popup-open:hover {
-  transform: none; /* Desactivar el efecto de hover */
-  cursor: default; /* Cambiar el cursor para indicar que no es interactiva */
+  transform: none;
+  cursor: default;
 }
 
 .book-content {
   display: flex;
+  flex-direction: row; /* Asegura que el contenido esté en fila */
+  height: 100%;
+  width: 100%;
 }
 
 .book-cover {
-  width: 100px;
-  height: 150px;
+  width: 100px; /* Ajusta el ancho de las imágenes de las portadas */
+  height: 100%; /* Ajusta la altura de las imágenes de las portadas */
+  object-fit: cover; /* Asegura que la imagen mantenga su proporción */
   margin-right: 10px;
 }
 
 .book-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .rating-container {
@@ -152,6 +162,7 @@ button.edit {
   padding: 5px 10px;
   cursor: pointer;
 }
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -187,7 +198,7 @@ button.edit {
 }
 
 .edit-btn {
-  background: #ccc; /* Color más sutil */
+  background: #ccc;
   color: black;
   border: none;
   padding: 10px 20px;
@@ -197,11 +208,12 @@ button.edit {
 }
 
 .edit-btn:hover {
-  background: #bbb; /* Color más oscuro al pasar el ratón */
+  background: #bbb;
 }
+
 .form,
 .content {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -252,12 +264,20 @@ button.edit {
 }
 
 .btn-block {
+  display: block;
   width: 100%;
   margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .btn:hover {
   transform: scale(0.98);
+}
+
+form {
+  width: 100%; /* Asegura que el formulario ocupe el 100% del ancho */
+  margin: 0 auto;
 }
 
 .loadingSpinnerContainer {
@@ -299,18 +319,18 @@ button.edit {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow: auto; /* Añadir overflow para permitir el desplazamiento si el contenido es demasiado grande */
+  overflow: auto;
 }
 
 .popup-inner {
   position: relative;
   padding: 20px;
-  width: 90%; /* Ajustar el ancho para que se ajuste mejor a la pantalla */
+  width: 90%;
   max-width: 600px;
   background: #fff;
   border-radius: 10px;
   text-align: center;
-  margin: 20px; /* Añadir margen para evitar que se corte en los bordes */
+  margin: 20px;
 }
 
 .popup-content {
@@ -326,8 +346,8 @@ button.edit {
 }
 
 .popup-book-cover {
-  max-width: 100%; /* Ajustar el ancho máximo al 100% del contenedor */
-  height: auto; /* Mantener la proporción de la imagen */
+  max-width: 100%;
+  height: auto;
 }
 
 .popup-right {
@@ -338,7 +358,7 @@ button.edit {
 
 .rating-container-popup {
   display: flex;
-  justify-content: flex-start; /* Alinear las estrellas a la izquierda */
+  justify-content: flex-start;
   align-items: center;
   margin: 10px 0;
 }
@@ -368,12 +388,12 @@ button.edit {
   cursor: pointer;
   margin-top: 20px;
   border-radius: 5px;
-  width: 100%; /* Hacer que el botón ocupe todo el ancho */
+  width: 100%;
 }
 
 .book-info img {
-  max-width: 100%; /* Ajustar el ancho máximo al 100% del contenedor */
-  height: auto; /* Mantener la proporción de la imagen */
+  max-width: 100%;
+  height: auto;
   margin-bottom: 10px;
 }
 
@@ -388,15 +408,24 @@ button.edit {
 
 @media (max-width: 600px) {
   .popup-inner {
-    width: 95%; /* Ajustar el ancho para pantallas pequeñas */
-    padding: 10px; /* Reducir el padding para pantallas pequeñas */
+    width: 95%;
+    padding: 10px;
   }
 
   .popup-content {
-    flex-direction: column; /* Asegurar que el contenido se apile en pantallas pequeñas */
+    flex-direction: column;
   }
 
   .popup-right {
-    padding-left: 0; /* Eliminar el padding izquierdo en pantallas pequeñas */
+    padding-left: 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
