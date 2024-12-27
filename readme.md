@@ -14,7 +14,7 @@ This project is a full-stack application for managing a collection of books. Use
 
 ## Demo
 
-Check out the demo video on YouTube to see how the application works: [YouTube Demo](https://www.youtube.com/watch?v=your-demo-video-link)
+Check out the demo video on YouTube to see how the application works: [YouTube Demo](https://youtu.be/ZgAoukURXuc)
 
 ## Usage
 
