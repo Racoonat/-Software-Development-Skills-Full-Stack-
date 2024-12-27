@@ -10,11 +10,13 @@ This project is a full-stack application for managing a collection of books. Use
 - JWT authentication
 - Add, edit, delete, and view books
 - Upload book covers
-- Manage book information (title, author, rating, status)
+- Manage book information (title, author, rating, status, cover)
+- User profile management
+- Average rating calculation for read books
 
 ## Demo
 
-Check out the demo video on YouTube to see how the application works: [YouTube Demo](https://youtu.be/ZgAoukURXuc)
+Check out the demo video on YouTube to see how the application works: [YouTube Demo](https://youtu.be/OKdeR6RD0uI)
 
 ## Usage
 
@@ -26,14 +28,12 @@ Check out the demo video on YouTube to see how the application works: [YouTube D
 
 ```bash
 # Backend dependencies
-cd project
+cd Project
 npm install
 
 # Frontend dependencies
 cd frontend
 npm install
-
-```
 
 # Start the development server
 cd project
