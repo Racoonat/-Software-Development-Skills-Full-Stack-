@@ -26,6 +26,10 @@ const bookSchema = mongoose.Schema(
       required: [true, 'Please add a status'],
       enum: ['read', 'TBR', 'reading'],
     },
+    cover: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

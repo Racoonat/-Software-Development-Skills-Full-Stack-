@@ -6,6 +6,7 @@ function BookItem({ book }) {
 
   return (
     <div className='book'>
+      {book.cover && <img src={book.cover} alt={book.title} className='book-cover' />}
       <h2>{book.title}</h2>
       <p>{book.author}</p>
       <p>Rating: {book.rating}</p>

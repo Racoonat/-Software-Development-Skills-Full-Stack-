@@ -1,14 +1,11 @@
 const asyncHandler = require('express-async-handler')
-
 const Book = require('../models/bookModel')
-const User = require('../models/userModel')
 
 // @desc    Get books
 // @route   GET /api/books
 // @access  Private
 const getBooks = asyncHandler(async (req, res) => {
   const books = await Book.find({ user: req.user.id })
-
   res.status(200).json(books)
 })
 
@@ -16,7 +13,7 @@ const getBooks = asyncHandler(async (req, res) => {
 // @route   POST /api/books
 // @access  Private
 const setBook = asyncHandler(async (req, res) => {
-  const { title, author, rating, status } = req.body
+  const { title, author, rating, status, cover } = req.body
 
   if (!title || !author || !rating || !status) {
     res.status(400)
@@ -28,6 +25,7 @@ const setBook = asyncHandler(async (req, res) => {
     author,
     rating,
     status,
+    cover, // Asegúrate de que el campo cover se esté guardando
     user: req.user.id,
   })
 

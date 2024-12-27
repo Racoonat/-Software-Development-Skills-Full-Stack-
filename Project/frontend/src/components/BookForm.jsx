@@ -8,9 +8,10 @@ function BookForm() {
     author: '',
     rating: '',
     status: '',
+    cover: '',
   })
 
-  const { title, author, rating, status } = formData
+  const { title, author, rating, status, cover } = formData
 
   const dispatch = useDispatch()
 
@@ -24,12 +25,13 @@ function BookForm() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(createBook({ title, author, rating, status }))
+    dispatch(createBook({ title, author, rating, status, cover }))
     setFormData({
       title: '',
       author: '',
       rating: '',
       status: '',
+      cover: '',
     })
   }
 
@@ -81,6 +83,16 @@ function BookForm() {
             <option value='TBR'>TBR</option>
             <option value='reading'>Reading</option>
           </select>
+        </div>
+        <div className='form-group'>
+          <label htmlFor='cover'>Cover URL</label>
+          <input
+            type='text'
+            name='cover'
+            id='cover'
+            value={cover}
+            onChange={onChange}
+          />
         </div>
         <div className='form-group'>
           <button className='btn btn-block' type='submit'>
