@@ -41,10 +41,24 @@ const deleteBook = async (bookId, token) => {
   return response.data
 }
 
+// Update user book
+const updateBook = async (bookData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.put(API_URL + bookData.id, bookData, config)
+
+  return response.data
+}
+
 const bookService = {
   createBook,
   getBooks,
   deleteBook,
+  updateBook,
 }
 
 export default bookService
