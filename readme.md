@@ -26,13 +26,15 @@ Check out the demo video on YouTube to see how the application works: [YouTube D
 
 ```bash
 # Backend dependencies
+cd project
 npm install
 
 # Frontend dependencies
 cd frontend
 npm install
-npm install react-rating-stars-component
+
 ```
 
 # Start the development server
+cd project
 npm run dev

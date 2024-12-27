@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../features/auth/authSlice'
 import { getBooks } from '../features/books/bookSlice'
+import placeholderImage from '../assets/defaultPhoto.png' // Asegúrate de tener una imagen de placeholder en esta ruta
 
 function Profile() {
   const { user } = useSelector((state) => state.auth)
@@ -55,14 +56,12 @@ function Profile() {
 
   return (
     <div className='profile'>
-      <div className='profile-header'>
-        <button className='btn edit-btn' onClick={handleEditClick}>
-          Edit Profile
-        </button>
-      </div>
       <div className='profile-content'>
         <div className='profile-picture'>
-          <img src={profilePicture} alt='Profile' />
+          <img src={profilePicture || placeholderImage} alt='Profile' />
+          <button className='btn edit-btn' onClick={handleEditClick}>
+            Edit Profile
+          </button>
         </div>
         <div className='profile-details'>
           {isEditing ? (

@@ -158,13 +158,6 @@ button.edit {
   align-items: center;
 }
 
-.profile-header {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
 .profile-content {
   display: flex;
   align-items: flex-start;
@@ -174,6 +167,7 @@ button.edit {
 .profile-picture {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -183,26 +177,28 @@ button.edit {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
 .profile-details {
   flex: 2;
-  padding-left: 10px; /* Reduce el padding para acercar los datos a la foto */
-  text-align: left; /* Alineación a la izquierda */
+  padding-left: 20px;
+  text-align: left;
 }
 
 .edit-btn {
-  background: blue;
-  color: white;
+  background: #ccc; /* Color más sutil */
+  color: black;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 .edit-btn:hover {
-  background: darkblue;
+  background: #bbb; /* Color más oscuro al pasar el ratón */
 }
-
 .form,
 .content {
   width: 70%;
