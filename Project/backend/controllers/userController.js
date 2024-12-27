@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, profilePicture } = req.body
 
   if (!name || !email || !password) {
     res.status(400)
@@ -31,6 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password: hashedPassword,
+    profilePicture,
   })
 
   if (user) {
@@ -38,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      profilePicture: user.profilePicture,
       token: generateToken(user._id),
     })
   } else {
@@ -60,6 +62,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      profilePicture: user.profilePicture,
       token: generateToken(user._id),
     })
   } else {
@@ -75,6 +78,34 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(req.user)
 })
 
+// @desc    Update user profile
+// @route   PUT /api/users/me
+// @access  Private
+const updateProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user.id)
+
+  if (!user) {
+    res.status(400)
+    throw new Error('User not found')
+  }
+
+  const { name, email, profilePicture } = req.body
+
+  user.name = name || user.name
+  user.email = email || user.email
+  user.profilePicture = profilePicture || user.profilePicture
+
+  const updatedUser = await user.save()
+
+  res.status(200).json({
+    _id: updatedUser.id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    profilePicture: updatedUser.profilePicture,
+    token: generateToken(updatedUser._id),
+  })
+})
+
 // Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -86,4 +117,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  updateProfile,
 }
