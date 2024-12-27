@@ -28,15 +28,17 @@ function BookItem({ book }) {
             <div className='book-info'>
               <h2>{book.title}</h2>
               <p>{book.author}</p>
-              <div className='rating-container'>
-                <ReactStars
-                  count={5}
-                  value={book.rating}
-                  size={24}
-                  activeColor="#ffd700"
-                  edit={false}
-                />
-              </div>
+              {book.status === 'read' && (
+                <div className='rating-container'>
+                  <ReactStars
+                    count={5}
+                    value={book.rating}
+                    size={24}
+                    activeColor="#ffd700"
+                    edit={false}
+                  />
+                </div>
+              )}
               <p>Status: {book.status}</p>
             </div>
           </div>

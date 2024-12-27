@@ -17,7 +17,7 @@ const bookSchema = mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: [true, 'Please add a rating'],
+      required: false,
       min: 1,
       max: 5,
     },

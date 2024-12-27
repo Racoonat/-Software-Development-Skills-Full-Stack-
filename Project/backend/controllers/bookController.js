@@ -6,6 +6,7 @@ const Book = require('../models/bookModel')
 // @access  Private
 const getBooks = asyncHandler(async (req, res) => {
   const books = await Book.find({ user: req.user.id })
+
   res.status(200).json(books)
 })
 
@@ -13,23 +14,23 @@ const getBooks = asyncHandler(async (req, res) => {
 // @route   POST /api/books
 // @access  Private
 const setBook = asyncHandler(async (req, res) => {
-  const { title, author, rating, status, cover } = req.body
+  const { title, author, status, cover, rating } = req.body
 
-  if (!title || !author || !rating || !status) {
+  if (!title || !author || !status) {
     res.status(400)
-    throw new Error('Please add all fields')
+    throw new Error('Please add all required fields')
   }
 
   const book = await Book.create({
+    user: req.user.id,
     title,
     author,
-    rating,
     status,
-    cover, // Asegúrate de que el campo cover se esté guardando
-    user: req.user.id,
+    cover,
+    rating: rating || 0, // Asignar un valor por defecto si no se proporciona
   })
 
-  res.status(200).json(book)
+  res.status(201).json(book)
 })
 
 // @desc    Update book

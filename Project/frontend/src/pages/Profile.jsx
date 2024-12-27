@@ -43,9 +43,10 @@ function Profile() {
   }
 
   const calculateAverageRating = () => {
-    if (books.length === 0) return 0
-    const totalRating = books.reduce((acc, book) => acc + book.rating, 0)
-    return (totalRating / books.length).toFixed(2)
+    const readBooks = books.filter(book => book.status === 'read')
+    if (readBooks.length === 0) return 0
+    const totalRating = readBooks.reduce((acc, book) => acc + book.rating, 0)
+    return (totalRating / readBooks.length).toFixed(2)
   }
 
   const countReadBooks = () => {

@@ -61,16 +61,6 @@ function EditBookForm({ book, onCancel }) {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='rating'>Rating</label>
-          <ReactStars
-            count={5}
-            value={rating}
-            size={24}
-            activeColor="#ffd700"
-            onChange={onRatingChange}
-          />
-        </div>
-        <div className='form-group'>
           <label htmlFor='status'>Status</label>
           <select
             name='status'
@@ -84,6 +74,18 @@ function EditBookForm({ book, onCancel }) {
             <option value='reading'>Reading</option>
           </select>
         </div>
+        {status === 'read' && (
+          <div className='form-group'>
+            <label htmlFor='rating'>Rating</label>
+            <ReactStars
+              count={5}
+              value={rating}
+              size={24}
+              activeColor="#ffd700"
+              onChange={onRatingChange}
+            />
+          </div>
+        )}
         <div className='form-group'>
           <label htmlFor='cover'>Cover URL</label>
           <input
