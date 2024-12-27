@@ -1,0 +1,46 @@
+Lappeenrannan teknillinen yliopisto
+School of Business and Management
+
+Software Development Skills
+
+Natalia Rodriguez Redondo,
+
+LEARNING DIARY, SOFTWARE DEVELOPMENT SKILLS: FULL-STACK MODULE
+
+LEARNING DIARY
+
+October 28, 2023
+I started the course by reviewing the general information and understanding its main focus.
+
+November 4, 2023
+I chose Visual Studio Code as my code editor for this course. I installed all the necessary extensions and configured the required software.
+
+November 11, 2023
+I began the video "Node.js Crash Course", following all the steps. I encountered an issue with Git that took longer than expected to resolve, so I couldn’t finish the video.
+
+November 12, 2023
+Although I didn’t have much time today, I almost finished the Node.js video. I am focusing on understanding each concept well to avoid problems later in the course.
+
+November 16, 2023
+I continued with the Node.js video and feel like I am getting a better grasp of the concepts. I reached the file system management section and found it easier to understand compared to previous days.
+
+November 17, 2023
+I worked on the Node.js video again, exploring the path module. The explanations were clear, and I could follow them without much difficulty.
+
+November 25 – December 22, 2023
+I was unable to work on the course during this period due to personal reasons.
+
+December 23, 2023
+I resumed the course by watching the video "Learn The MERN Stack - Express & MongoDB REST API". The integration of Express with MongoDB was interesting, and the tutorial gave me an overview of how to structure a backend application.
+
+December 24, 2023
+I finished watching the remaining MERN stack videos, including "Learn The MERN Stack - JWT Authentication" and "Learn The MERN Stack - Frontend Authentication | Redux Toolkit". These videos provided insights into building a full-stack application, handling user authentication, and managing state with Redux, but I haven’t implemented anything yet (I have the project planned).
+
+December 25, 2023
+I started implementing the backend for the project. I set up the Express server and connected it to MongoDB. I created the user model and authentication routes.
+
+December 26, 2023
+I continued working on the backend. I added middleware for error handling and JWT authentication. I also created routes and controllers for managing books. I began working on the frontend. I set up the React project and started building the components for user registration and login. I also integrated Redux for state management. My work is based on the example code provided in the course materials.
+
+December 27, 2023
+Yesterday I had a lot of problems connecting the backend with the frontend, but it ended up being simple errors I didn’t notice because I was tired. So today I fixed everything and added cool things to my project such as the possibility to add covers or edit information of a book already created.
