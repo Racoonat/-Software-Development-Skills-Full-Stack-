@@ -13,6 +13,7 @@ function BookItem({ book }) {
 
   const handleEditClick = () => {
     setIsEditing(true)
+    setIsPopupOpen(false)
   }
 
   const handleCancelEdit = () => {
@@ -38,6 +39,7 @@ function BookItem({ book }) {
             <div className='book-info'>
               <h2>{book.title}</h2>
               <p>{book.author}</p>
+              <p>Status: {book.status}</p>
               {book.status === 'read' && (
                 <div className='rating-container'>
                   <ReactStars
@@ -49,18 +51,21 @@ function BookItem({ book }) {
                   />
                 </div>
               )}
-              <p>Status: {book.status}</p>
             </div>
           </div>
-          <button onClick={() => dispatch(deleteBook(book._id))} className='close'>
-            X
-          </button>
-          <button onClick={handleEditClick} className='edit'>
-            Edit
-          </button>
+          {isPopupOpen && (
+            <>
+              <button onClick={() => dispatch(deleteBook(book._id))} className='close'>
+                X
+              </button>
+              <button onClick={handleEditClick} className='edit'>
+                Edit
+              </button>
+            </>
+          )}
         </>
       )}
-      {isPopupOpen && <BookInfoPopup book={book} onClose={handleClosePopup} />}
+      {isPopupOpen && <BookInfoPopup book={book} onClose={handleClosePopup} onEdit={handleEditClick} />}
     </div>
   )
 }

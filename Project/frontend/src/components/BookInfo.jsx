@@ -5,7 +5,6 @@ function BookInfo({ book }) {
         <p><strong>Author:</strong> {book.author}</p>
         <p><strong>Rating:</strong> {book.rating}</p>
         <p><strong>Status:</strong> {book.status}</p>
-        <p><strong>Description:</strong> {book.description}</p>
       </div>
     )
   }
