@@ -8,7 +8,7 @@ function BookForm() {
     author: '',
     rating: '',
     status: '',
-    cover: '',
+    cover: '', // Asegúrate de que el campo cover esté presente
   })
 
   const { title, author, rating, status, cover } = formData
