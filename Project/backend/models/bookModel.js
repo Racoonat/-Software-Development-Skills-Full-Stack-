@@ -1,20 +1,25 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const goalSchema = mongoose.Schema(
-  {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
-    text: {
-      type: String,
-      required: [true, 'Please add a text value'],
-    },
+const BookSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-)
+  rating: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5, // Rating between 1 and 5
+  },
+  status: {
+    type: String,
+    enum: ['read', 'unread', 'pending'], // Enum for status
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-module.exports = mongoose.model('Goal', goalSchema)
+module.exports = mongoose.model('Book', BookSchema);

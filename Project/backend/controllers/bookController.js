@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler')
-
-const Book = require('../models/bookModel')
+const Book = require('../models/bookModel') // Usamos el modelo de libro
 const User = require('../models/userModel')
 
 // @desc    Get books
@@ -12,21 +11,25 @@ const getBooks = asyncHandler(async (req, res) => {
   res.status(200).json(books)
 })
 
-// @desc    add book
+// @desc    Set book
 // @route   POST /api/books
 // @access  Private
-const addBook = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+const setBook = asyncHandler(async (req, res) => {
+  const { title, rating, status } = req.body
+
+  if (!title || !rating || !status) {
     res.status(400)
-    throw new Error('Please add a text field')
+    throw new Error('Please add all required fields (title, rating, status)')
   }
 
   const book = await Book.create({
-    text: req.body.text,
-    user: req.user.id,
+    title,
+    rating,
+    status,
+    user: req.user.id, // Relacionamos el libro con el usuario
   })
 
-  res.status(200).json(book)
+  res.status(201).json(book)
 })
 
 // @desc    Update book
@@ -60,7 +63,7 @@ const updateBook = asyncHandler(async (req, res) => {
 })
 
 // @desc    Delete book
-// @route   DELETE /api/book/:id
+// @route   DELETE /api/books/:id
 // @access  Private
 const deleteBook = asyncHandler(async (req, res) => {
   const book = await Book.findById(req.params.id)
@@ -89,7 +92,7 @@ const deleteBook = asyncHandler(async (req, res) => {
 
 module.exports = {
   getBooks,
-  addBook,
+  setBook,
   updateBook,
   deleteBook,
 }

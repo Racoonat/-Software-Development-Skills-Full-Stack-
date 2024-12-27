@@ -1,27 +1,29 @@
 {
-  "name": "project",
+  "name": "mern-tutorial",
   "version": "1.0.0",
-  "description": "Final project for Full Stack course",
+  "description": "Goalsetter app for youtube tutorial",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Natalia rodriguez Redondo",
-  "license": "ISC",
+  "author": "Brad Traversy",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.2"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.9"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0",
-    "nodemon": "^3.1.9"
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   }
 }
