@@ -31,6 +31,7 @@ npm install
 # Frontend dependencies
 cd frontend
 npm install
+npm install react-rating-stars-component
 ```
 
 # Start the development server

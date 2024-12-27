@@ -93,19 +93,42 @@ h3 {
 }
 
 .book {
-  background-color: #f4f4f4;
-  margin: 10px 0;
-  padding: 20px 0 10px;
   position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
-.book .close {
+.book-content {
+  display: flex;
+}
+
+.book-cover {
+  width: 100px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+button.close {
   position: absolute;
   top: 10px;
-  right: 15px;
-  cursor: pointer;
+  right: 10px;
+  background: red;
+  color: white;
   border: none;
-  background: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 button.edit {

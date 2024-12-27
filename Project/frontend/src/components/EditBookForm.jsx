@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateBook } from '../features/books/bookSlice'
+import ReactStars from 'react-rating-stars-component'
 
 function EditBookForm({ book, onCancel }) {
   const [formData, setFormData] = useState({
@@ -19,6 +20,13 @@ function EditBookForm({ book, onCancel }) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+    }))
+  }
+
+  const onRatingChange = (newRating) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      rating: newRating,
     }))
   }
 
@@ -54,14 +62,12 @@ function EditBookForm({ book, onCancel }) {
         </div>
         <div className='form-group'>
           <label htmlFor='rating'>Rating</label>
-          <input
-            type='number'
-            name='rating'
-            id='rating'
+          <ReactStars
+            count={5}
             value={rating}
-            onChange={onChange}
-            min='1'
-            max='5'
+            size={24}
+            activeColor="#ffd700"
+            onChange={onRatingChange}
           />
         </div>
         <div className='form-group'>

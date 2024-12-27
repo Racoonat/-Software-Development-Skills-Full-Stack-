@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createBook } from '../features/books/bookSlice'
+import ReactStars from 'react-rating-stars-component'
 
 function BookForm() {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
-    rating: '',
+    rating: 0,
     status: '',
-    cover: '', // Asegúrate de que el campo cover esté presente
+    cover: '',
   })
 
   const { title, author, rating, status, cover } = formData
@@ -22,14 +23,21 @@ function BookForm() {
     }))
   }
 
+  const onRatingChange = (newRating) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      rating: newRating,
+    }))
+  }
+
   const onSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(createBook({ title, author, rating, status, cover }))
+    dispatch(createBook(formData))
     setFormData({
       title: '',
       author: '',
-      rating: '',
+      rating: 0,
       status: '',
       cover: '',
     })
@@ -60,14 +68,12 @@ function BookForm() {
         </div>
         <div className='form-group'>
           <label htmlFor='rating'>Rating</label>
-          <input
-            type='number'
-            name='rating'
-            id='rating'
+          <ReactStars
+            count={5}
             value={rating}
-            onChange={onChange}
-            min='1'
-            max='5'
+            size={24}
+            activeColor="#ffd700"
+            onChange={onRatingChange}
           />
         </div>
         <div className='form-group'>
