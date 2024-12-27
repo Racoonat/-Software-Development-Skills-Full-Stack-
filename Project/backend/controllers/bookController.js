@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
-const Book = require('../models/bookModel') // Usamos el modelo de libro
+
+const Book = require('../models/bookModel')
 const User = require('../models/userModel')
 
 // @desc    Get books
@@ -15,21 +16,22 @@ const getBooks = asyncHandler(async (req, res) => {
 // @route   POST /api/books
 // @access  Private
 const setBook = asyncHandler(async (req, res) => {
-  const { title, rating, status } = req.body
+  const { title, author, rating, status } = req.body
 
-  if (!title || !rating || !status) {
+  if (!title || !author || !rating || !status) {
     res.status(400)
-    throw new Error('Please add all required fields (title, rating, status)')
+    throw new Error('Please add all fields')
   }
 
   const book = await Book.create({
     title,
+    author,
     rating,
     status,
-    user: req.user.id, // Relacionamos el libro con el usuario
+    user: req.user.id,
   })
 
-  res.status(201).json(book)
+  res.status(200).json(book)
 })
 
 // @desc    Update book

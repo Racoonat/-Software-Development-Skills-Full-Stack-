@@ -1,10 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import GoalForm from '../components/GoalForm'
-import GoalItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
-import { getGoals } from '../features/goals/goalSlice'
 import BookForm from '../components/BookForm'
 import BookItem from '../components/BookItem'
 import { getBooks, reset } from '../features/books/bookSlice'
@@ -14,9 +11,10 @@ function Dashboard() {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
+  const { books, isLoading, isError, message } = useSelector(
+    (state) => state.books
   )
+
 
   useEffect(() => {
     if (isError) {
@@ -48,14 +46,14 @@ function Dashboard() {
       <BookForm />
 
       <section className='content'>
-        {goals.length > 0 ? (
-          <div className='goals'>
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+        {books.length > 0 ? (
+          <div className='books'>
+            {books.map((book) => (
+              <BookItem key={book._id} book={book} />
             ))}
           </div>
         ) : (
-          <h3>You have not shelved any book yet</h3>
+          <h3>You have not set any goals</h3>
         )}
       </section>
     </>

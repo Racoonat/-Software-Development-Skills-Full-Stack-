@@ -10,6 +10,6 @@ const {
 const { protect } = require('../middleware/authMiddleware')
 
 router.route('/').get(protect, getBooks).post(protect, setBook)
-router.route('/:id').put(protect, updateBook).delete(protect, deleteBook)
+router.route('/:id').delete(protect, deleteBook).put(protect, updateBook)
 
 module.exports = router
