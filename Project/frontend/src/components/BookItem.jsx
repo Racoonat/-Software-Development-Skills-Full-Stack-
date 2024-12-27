@@ -4,10 +4,12 @@ import { deleteBook } from '../features/books/bookSlice'
 import EditBookForm from './EditBookForm'
 import placeholderImage from '../assets/placeholder.png'
 import ReactStars from 'react-rating-stars-component'
+import BookInfoPopup from './BookInfoPopup'
 
 function BookItem({ book }) {
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const handleEditClick = () => {
     setIsEditing(true)
@@ -17,13 +19,21 @@ function BookItem({ book }) {
     setIsEditing(false)
   }
 
+  const handleBookClick = () => {
+    setIsPopupOpen(true)
+  }
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false)
+  }
+
   return (
-    <div className='book'>
+    <div className={`book ${isPopupOpen ? 'popup-open' : ''}`}>
       {isEditing ? (
         <EditBookForm book={book} onCancel={handleCancelEdit} />
       ) : (
         <>
-          <div className='book-content'>
+          <div className='book-content' onClick={handleBookClick}>
             <img src={book.cover || placeholderImage} alt={book.title} className='book-cover' />
             <div className='book-info'>
               <h2>{book.title}</h2>
@@ -50,6 +60,7 @@ function BookItem({ book }) {
           </button>
         </>
       )}
+      {isPopupOpen && <BookInfoPopup book={book} onClose={handleClosePopup} />}
     </div>
   )
 }
