@@ -1,7 +1,7 @@
 {
-  "name": "mern-tutorial",
+  "name": "project",
   "version": "1.0.0",
-  "description": "Goalsetter app for youtube tutorial",
+  "description": "Final project for the MERN stack course",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -10,8 +10,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Brad Traversy",
-  "license": "MIT",
+  "author": "Natalia Rodriguez Redondo",
+  "license": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
